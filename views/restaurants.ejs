@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%-include('./includes/head') %>
+    <link rel="stylesheet" href="styles/restaurants.css" />
+  </head>
+  <body>
+    <%-include('./includes/header') %>
+    <%-include('./includes/sideDrawer') %>
+    <aside id="mobile-drawer">
+      <nav>
+        <ul>
+          <li class="nav-item">
+            <a href="/restaurants">Browse Restaurants</a>
+          </li>
+          <li class="nav-item">
+            <a href="/recommend">Share a Restaurant</a>
+          </li>
+          <li class="nav-item"><a href="/about">About Eatwell</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <main>
+      <h1>Recommended restaurants</h1>
+      <% if (numberOfRestaurant === 0) { %>
+      <h1 style="color: brown">There is no antyhing in here...</h1>
+
+      <% } else { %>
+      <p>Find your next favorite restaurants with help of our other users!</p>
+      <ul id="restaurants-list">
+        <p>We found <%= numberOfRestaurant %> restaurants!</p>
+        <% for (const restaurantItem of restaurants){ %>
+          <%-include('./includes/restaurants/restaurant-item', {restaurant : restaurantItem}) %>
+        <% } %>
+      </ul>
+      <% } %>
+    </main>
+  </body>
+</html>
